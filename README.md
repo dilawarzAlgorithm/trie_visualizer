@@ -27,5 +27,5 @@ Because this project is built with Vanilla Web Technologies, no build step or pa
 
 1. Clone the repository:
    ```bash
-   git clone [\[https://github.com/dilawarzAlgorithm/trie_visualizer.git\](https://github.com/dilawarzAlgorithm/trie_visualizer.git)](https://github.com/dilawarzAlgorithm/trie_visualizer.git)
+   git clone https://github.com/dilawarzAlgorithm/trie_visualizer.git
    ```
