@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trie (Prefix Tree) Visualizer & Tutorial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Link to our separated CSS file -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Trie <span>Visualizer</span></h1>
+        <div style="color: var(--text-secondary); font-size: 14px;">
+            <i class="fa-solid fa-graduation-cap"></i> Interactive Data Structure Tutorial
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Sidebar Controls -->
+        <div class="sidebar">
+            <div class="control-group">
+                <h3><i class="fa-solid fa-plus"></i> 1. Insert Word</h3>
+                <div class="input-wrapper">
+                    <input type="text" id="insertInput" placeholder="e.g., CAT" autocomplete="off">
+                    <button id="insertBtn">Insert</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <h3><i class="fa-solid fa-magnifying-glass"></i> 2. Search Word</h3>
+                <div class="input-wrapper">
+                    <input type="text" id="searchInput" placeholder="e.g., CAR" autocomplete="off">
+                    <button id="searchBtn">Search</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <h3><i class="fa-solid fa-list-ul"></i> 3. How we search Word</h3>
+                <div class="input-wrapper">
+                    <input type="text" id="autocompleteInput" placeholder="e.g., CA" autocomplete="off">
+                    <button id="autocompleteBtn">Prefix</button>
+                </div>
+                <p style="font-size: 12px; color: var(--text-secondary); margin: 0;">Finds all words starting with this prefix.</p>
+                
+                <div id="autocompleteResults" class="results-panel">
+                    <h4>Found Words <button id="closeResultsBtn" style="background:none; border:none; color:var(--text-secondary); cursor:pointer; padding:0;"><i class="fa-solid fa-times"></i></button></h4>
+                    <ul id="resultsList"></ul>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <h3><i class="fa-solid fa-sliders"></i> 4. Settings & Controls</h3>
+                <div style="margin-bottom: 15px;">
+                    <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--text-secondary); margin-bottom: 5px;">
+                        <span>Animation Speed</span>
+                        <span id="speedLabel">Normal</span>
+                    </div>
+                    <input type="range" id="speedSlider" min="1" max="10" value="5">
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 5px; border-top: 1px solid var(--border-color);">
+                    <span style="font-size: 13px; color: var(--text-secondary); font-weight: 500;">View Mode</span>
+                    <button id="viewToggleBtn" class="btn-secondary" style="padding: 6px 12px; font-size: 12px;">
+                        <i class="fa-solid fa-table-cells"></i> Detailed View
+                    </button>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <h3><i class="fa-solid fa-bolt"></i> 5. Quick Actions</h3>
+                <div class="input-wrapper" style="flex-wrap: wrap;">
+                    <button id="ex1Btn" class="btn-secondary" style="flex: 1 1 45%;"><i class="fa-solid fa-dog"></i> Example 1</button>
+                    <button id="ex2Btn" class="btn-secondary" style="flex: 1 1 45%;"><i class="fa-solid fa-code"></i> Example 2</button>
+                    <button id="clearBtn" class="btn-secondary" style="flex: 1 1 100%; border-color: var(--danger); color: var(--danger);"><i class="fa-solid fa-trash"></i> Clear Tree</button>
+                </div>
+            </div>
+
+            <div class="log-container">
+                <div class="log-header">
+                    <i class="fa-solid fa-terminal"></i> Execution Log
+                </div>
+                <div class="log-messages" id="logMessages">
+                    <span>System initialized. Tree is empty.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="visualization-area" id="visArea">
+            <div class="tree-container" id="treeContainer">
+                <svg id="svg-canvas"></svg>
+                <div id="nodes-container"></div>
+            </div>
+            <div id="blocker"></div>
+        </div>
+    </div>
+
+    <div class="edu-panel">
+        <div class="edu-card">
+            <h4><i class="fa-solid fa-sitemap"></i> What is a Trie?</h4>
+            <p>A Trie (Prefix Tree) is a tree data structure used for efficient retrieval of a key in a dataset of strings. Unlike binary trees, nodes don't store their keys—their position in the tree defines the key.</p>
+        </div>
+        <div class="edu-card">
+            <h4><i class="fa-solid fa-stopwatch"></i> Complexity</h4>
+            <p>
+                <strong>Insert / Search:</strong> O(L), where L is the length of the word. Extremely fast since it's independent of the total number of words (N).<br>
+                <strong>Memory Structure:</strong> Each node typically allocates an array of pointers (size 26 for English alphabet) and a boolean flag.
+            </p>
+        </div>
+        <div class="edu-card">
+            <h4><i class="fa-solid fa-code"></i> Memory Structure (C++/Java)</h4>
+            <div class="code-snippet">class TrieNode {
+    // Array of 26 Node Pointers
+    TrieNode[] arr = new TrieNode[26];
+    
+    // Boolean flag for word completion
+    boolean flag = false;
+}</div>
+        </div>
+    </div>
+
+    <!-- Link to our separated Javascript file -->
+    <script src="js/script.js"></script>
+</body> 
+</html>
